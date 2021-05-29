@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import Card from '../components/PokemonLists'
 import Navbar from '../components/Navbar'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import Loader from '../components/Loader'
 
 const GET_POKEMONS = gql`
   query GetPokemons ($first: Int!) {
@@ -69,7 +70,7 @@ const Home = () => {
     document.title ='Home || Pokedex'
   }, [data])
   
-  if (loading && !pokemonsData[0]) return <p>loading...</p>
+  if (loading && !pokemonsData[0]) return <Loader />
   if (error) return <p>error: {error.message}</p>
   return (
     <>
@@ -84,7 +85,7 @@ const Home = () => {
           dataLength={pokemonsData.length}
           next={refetch}
           hasMore={true}
-          loader={<h4>loading infinity</h4>}
+          loader={<Loader />}
         >
         <div className="all-container">
           

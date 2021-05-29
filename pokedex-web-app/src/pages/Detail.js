@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import { Table } from 'react-bootstrap'
 import Card from '../components/PokemonLists'
+import Loader from '../components/Loader'
 
 const GET_POKEMON = gql`
   query GetPokemon ($name: String!) {
@@ -72,13 +73,14 @@ const DetailPage = () => {
   const { loading, error, data } = useQuery(GET_POKEMON, {
     variables:{name: pokemon},
   })
+
   const getColor = (type) => {
     return COLOR[type] || COLOR.normal;
   }; 
-  if (loading) return <p>loading...</p>
+
+  if (loading) return <Loader />
   if (error) return <p>error: {error.message}</p>
 
-  console.log(data);
   return (
     <>
     <Navbar />

@@ -27,20 +27,20 @@ const test = (type) => {
 }
   return (
     <>
-      <Navbar bg="light" expand="lg" fixed="top" className="d-flex justify-content-between">
+      <Navbar expand="lg" fixed="top" className="d-flex justify-content-between" style={{backgroundColor: '#1eae98'}}>
         <Nav className="mr-auto">
           <Nav.Link onClick={Redirect}>
             <Image
               src={logo}
               alt="logo"
               className="img-fluid"
-              style={{maxWidth: 120, marginLeft: 15}}
+              style={{maxWidth: 120, marginLeft: 30}}
             />
             </Nav.Link>
         </Nav>
         {
           params.pokemon ? <></> :
-          <NavDropdown  title="Filter">
+          <NavDropdown  title="Filter" style={{marginRight: 30, color: "white"}}>
                 <NavDropdown.Item onClick={() => test('Normal')}>Normal</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => test('Fire')}>Fire</NavDropdown.Item>
                 <NavDropdown.Item onClick={() => test('Fighting')}>Fighting</NavDropdown.Item>
